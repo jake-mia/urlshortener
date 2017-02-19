@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170219182745) do
+ActiveRecord::Schema.define(version: 20170219190836) do
 
   create_table "urls", force: :cascade do |t|
     t.integer  "idurl"
     t.string   "longurl"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "Randomstr"
   end
 
 end

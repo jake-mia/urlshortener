@@ -2,11 +2,15 @@ class UrlsController < ApplicationController
   before_action :set_url, only: [:show, :edit, :update, :destroy]
 
 #@url = Url.find(params[:id])
-def sendalong
+def sendalongid
   @url = Url.find(params[:id])
   redirect_to @url.longurl
 end
 
+def sendalongstr
+  @url = Url.find_by(Randomstr: params[:Randomstr])
+  redirect_to @url.longurl
+end
 
   # GET /urls
   # GET /urls.json
@@ -34,7 +38,7 @@ end
   def create
     @url = Url.new(url_params)
     @url.idurl = Url.all.length + 1
-
+    @url.Randomstr = (0...4).map { (65 + rand(26)).chr }.join
 
     respond_to do |format|
       if @url.save
@@ -79,6 +83,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def url_params
-      params.require(:url).permit(:idurl, :longurl)
+      params.require(:url).permit(:idurl, :longurl, :Randomstr)
     end
 end
