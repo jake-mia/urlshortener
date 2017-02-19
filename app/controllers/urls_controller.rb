@@ -1,15 +1,17 @@
 class UrlsController < ApplicationController
   before_action :set_url, only: [:show, :edit, :update, :destroy]
 
-#@url = Url.find(params[:id])
-def sendalongid
-  @url = Url.find(params[:id])
-  redirect_to @url.longurl
-end
 
-def sendalongstr
-  @url = Url.find_by(Randomstr: params[:Randomstr])
-  redirect_to @url.longurl
+def sendalongid
+
+  if Url.find_by(Randomstr: params[:id])
+    @url = Url.find_by(Randomstr: params[:id])
+     redirect_to @url.longurl
+  elsif Url.find(params[:id])
+    @url = Url.find(params[:id])
+    redirect_to @url.longurl
+  end
+
 end
 
   # GET /urls

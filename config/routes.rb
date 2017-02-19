@@ -5,6 +5,5 @@ Rails.application.routes.draw do
 get "/" => 'urls#index'
 
 get '/:id' => 'urls#sendalongid'
-get '/:string' => 'urls#sendalongstring'
 
 end
